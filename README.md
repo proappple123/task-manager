@@ -95,12 +95,14 @@ A simple task manager application built with Vue 3 and Node.js, utilizing Bootst
 1. **Run migrations to create the necessary tables**:
 
     ```bash
+    cd backend
     npx sequelize-cli db:migrate
     ```
 
 2. **Seed the database with initial data**:
 
     ```bash
+    cd backend
     npx sequelize-cli db:seed:all
     ```
 
