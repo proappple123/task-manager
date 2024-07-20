@@ -29,12 +29,12 @@
   </div>
 </template>
 
-<script type="module">
+<script>
 import axios from 'axios';
 import AddTaskModal from './modals/AddTaskModal.vue';
 import EditTaskModal from './modals/EditTaskModal.vue';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
-import * as bootstrap from 'bootstrap'; 
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import * as bootstrap from 'bootstrap';
 
 export default {
   components: {
@@ -49,9 +49,13 @@ export default {
   },
   methods: {
     fetchTasks() {
-      axios.get('http://localhost:3000/api/tasks').then((response) => {
-        this.tasks = response.data;
-      });
+      axios.get('http://localhost:3000/api/tasks')
+        .then((response) => {
+          this.tasks = response.data;
+        })
+        .catch((error) => {
+          console.error('There was an error!', error);
+        });
     },
     showAddTaskModal() {
       const modalElement = document.getElementById('addTaskModal');
@@ -65,9 +69,13 @@ export default {
       modal.show();
     },
     deleteTask(id) {
-      axios.delete(`http://localhost:3000/api/tasks/${id}`).then(() => {
-        this.fetchTasks();
-      });
+      axios.delete(`http://localhost:3000/api/tasks/${id}`)
+        .then(() => {
+          this.fetchTasks();
+        })
+        .catch((error) => {
+          console.error('There was an error!', error);
+        });
     },
     logout() {
       localStorage.removeItem('token');
