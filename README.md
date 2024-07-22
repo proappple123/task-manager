@@ -105,6 +105,12 @@ A simple task manager application built with Vue 3 and Node.js, utilizing Bootst
     cd backend
     npx sequelize-cli db:seed:all
     ```
+3. **After seeding, you can login with the following credential:**
+
+    ```bash
+    Email: john.doe@example.com
+    Password: password
+    ```
 
 ### Project Structure
 
